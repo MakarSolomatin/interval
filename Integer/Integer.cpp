@@ -1,3 +1,4 @@
+#include <iostream>
 #include <limits>
 #include <cmath>
 #include "Integer.hpp"
@@ -122,4 +123,8 @@ bool Integer::operator<=(const int &another) const {
 
 bool Integer::operator<=(const Integer &another) const {
     return number <= another.number;
+}
+
+void solomatin::operator<<( std::ostream cout, Integer i ) {
+    cout << i.number;
 }

@@ -1,9 +1,14 @@
+#include <iostream>
 #include "Rational.hpp"
 #include "Integer.hpp"
 
 using namespace solomatin;
 Rational::Rational( int p, int q ) : p(p), q(q) {
 }
+
+Rational::Rational( int x ) : p(x), q(1) {
+}
+
 
 bool Rational::operator==( const Rational &another ) const {
     return p * another.q == another.p * q ;
@@ -28,9 +33,9 @@ Rational & Rational::cut() {
 
 Rational Rational::operator+( const Rational &another ) const {
     if (q == another.q) {
-        return {p + another.p, q};
+
     }
-    return Rational{p * another.q + q * another.p, q * another.q}.cut();
+    return Rational(p * another.q + q * another.p, q * another.q).cut();
 }
 
 Rational Rational::operator-( const Rational &another ) const {
@@ -69,7 +74,10 @@ Rational &Rational::operator/=( const Rational &another ) {
 }
 
 Rational::operator float() const {
-    return p.operator/((float)q);
+    float y = static_cast<float>(q);
+    float z = p.operator/(y);
+
+    return p / static_cast<float>(q);
 }
 
 Rational::operator double() const {
@@ -95,3 +103,16 @@ bool Rational::operator<(const Rational &another) const {
 bool Rational::operator<=(const Rational &another) const {
     return p * another.q <= q * another.p;
 }
+
+void solomatin::operator<<( std::ostream cout, Rational r ) {
+    //cout << r.p << '/' << r.q;
+}
+
+Rational::Rational(Integer p, Integer q) : p(p), q(q) {
+
+}
+
+Rational::Rational(Integer x) : p(x), q(1) {
+
+}
+

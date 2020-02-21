@@ -1,6 +1,7 @@
 #ifndef INTERVAL_INTEGER_HPP
 #define INTERVAL_INTEGER_HPP
 
+#include <iostream>
 #include <string>
 #include <limits>
 
@@ -45,14 +46,17 @@ namespace solomatin {
         bool operator<=(const int &another) const;
         bool operator<=(const Integer &another) const;
 
-        operator int() const;
-        operator float() const;
-        operator double() const;
+        explicit operator int() const;
+        explicit operator float() const;
+        explicit operator double() const;
+
+        friend void operator<<( std::ostream cout, Integer i );
     private:
         int number;
         static const int min = std::numeric_limits<int>::min();
         static const int max = std::numeric_limits<int>::max();
     };
 }
+
 
 #endif //INTERVAL_INTEGER_HPP

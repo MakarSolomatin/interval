@@ -1,8 +1,9 @@
-#include <iostream>
-#include "Rational.hpp"
+//#include "Rational.hpp"
+#include "Integer.hpp"
+//#include "Real.hpp"
 
 int main() {
-    solomatin::Rational x;
-    std::cout << "Hello, world!";
+    solomatin::Integer i = 10;
+    float x = i / 20.0f;
     return 0;
 }

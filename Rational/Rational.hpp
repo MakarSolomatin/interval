@@ -1,12 +1,16 @@
 #ifndef INTERVAL_RATIONAL_HPP
 #define INTERVAL_RATIONAL_HPP
 
+#include <iostream>
 #include "Integer.hpp"
 
 namespace solomatin {
     class Rational {
     public:
-        Rational( int p = 0, int q = 0 );
+        Rational( int p, int q );
+        Rational( Integer p, Integer q );
+        Rational( int x );
+        Rational( Integer x );
 
         Rational &cut();
 
@@ -25,8 +29,10 @@ namespace solomatin {
         bool operator>=( const Rational &another ) const;
         bool operator<( const Rational &another ) const;
         bool operator<=( const Rational &another ) const;
-        operator float() const;
-        operator double() const;
+        explicit operator float() const;
+        explicit operator double() const;
+
+        friend void operator<<( std::ostream cout, Rational r );
     private:
         Integer p, //numerator
                 q; //denominator
