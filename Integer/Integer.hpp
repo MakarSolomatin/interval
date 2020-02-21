@@ -8,7 +8,7 @@
 namespace solomatin {
     class Integer {
     public:
-        Integer(int number = 0);
+        explicit Integer( int number = 0 );
 
         Integer(const Integer &copy);
 
@@ -26,8 +26,8 @@ namespace solomatin {
         Integer operator-(const Integer &another) const;
         Integer operator*(const Integer &another) const;
         Integer operator/(const Integer &another) const;
-        double operator/(const double &another);
-        float operator/(const float &another);
+        double operator/(const double &another) const;
+        float operator/(const float &another) const;
         Integer &operator+=(const Integer &another);
         Integer &operator-=(const Integer &another);
         Integer &operator*=(const Integer &another);
@@ -50,13 +50,15 @@ namespace solomatin {
         explicit operator float() const;
         explicit operator double() const;
 
-        friend void operator<<( std::ostream cout, Integer i );
+        friend std::ostream & operator<<( std::ostream &output, Integer i );
     private:
         int number;
         static const int min = std::numeric_limits<int>::min();
         static const int max = std::numeric_limits<int>::max();
     };
+    std::ostream & operator<<( std::ostream &output, solomatin::Integer i );
 }
+
 
 
 #endif //INTERVAL_INTEGER_HPP

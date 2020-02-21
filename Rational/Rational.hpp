@@ -39,5 +39,6 @@ namespace solomatin {
 
         Integer gcd() const;
     };
+    void operator<<( std::ostream cout, Rational r );
 }
 #endif //INTERVAL_RATIONAL_HPP

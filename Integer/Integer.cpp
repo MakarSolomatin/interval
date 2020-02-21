@@ -11,26 +11,26 @@ Integer::Integer( int number ) : number(number) {
 Integer Integer::operator+( const Integer &another ) const {
     if (max - another.number > number)
         throw ArithmeticError("[+] Integer overflowed");
-    return {number + another.number};
+    return Integer(number + another.number);
 }
 
 Integer Integer::operator-( const Integer &another ) const {
     if (min + another.number > number)
         throw ArithmeticError("[-] Integer overflowed");
-    return {number - another.number};
+    return Integer(number - another.number);
 }
 
 Integer Integer::operator*( const Integer &another ) const {
     if ((((number > 0 && another.number > 0) || (number < 0 && another.number < 0)) && abs(number) > max / abs(another.number)) ||
         (((number < 0 && another.number > 0) || (number > 0 && another.number < 0)) && abs(number) > min / abs(another.number)))
         throw ArithmeticError("[*] Integer overflowed");
-    return {number * another.number};
+    return Integer(number * another.number);
 }
 
 Integer Integer::operator/( const Integer &another ) const {
     if (another.number == 0)
         throw ArithmeticError("[/] Division by zero");
-    return {number / another.number};
+    return Integer(number / another.number);
 }
 
 Integer::Integer( const Integer &copy ) {
@@ -73,7 +73,7 @@ Integer::operator double() const {
     return (double)number;
 }
 
-double Integer::operator/(const double &another) {
+double Integer::operator/(const double &another) const {
     return number / another;
 }
 
@@ -81,7 +81,7 @@ Integer::operator float() const {
     return (float)number;
 }
 
-float Integer::operator/(const float &another) {
+float Integer::operator/(const float &another) const {
     return number / another;
 }
 
@@ -125,6 +125,7 @@ bool Integer::operator<=(const Integer &another) const {
     return number <= another.number;
 }
 
-void solomatin::operator<<( std::ostream cout, Integer i ) {
-    cout << i.number;
+std::ostream & solomatin::operator<<( std::ostream &output, Integer i ) {
+    output << i.number;
+    return output;
 }

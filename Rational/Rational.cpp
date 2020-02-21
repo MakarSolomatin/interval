@@ -74,14 +74,11 @@ Rational &Rational::operator/=( const Rational &another ) {
 }
 
 Rational::operator float() const {
-    float y = static_cast<float>(q);
-    float z = p.operator/(y);
-
     return p / static_cast<float>(q);
 }
 
 Rational::operator double() const {
-    return p.operator/((double)q);
+    return p / static_cast<double>(q);
 }
 
 bool Rational::operator!=(const Rational &another) const {

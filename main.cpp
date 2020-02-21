@@ -1,9 +1,12 @@
-//#include "Rational.hpp"
+#include <iostream>
+#include "Rational.hpp"
 #include "Integer.hpp"
 //#include "Real.hpp"
 
+using namespace solomatin;
 int main() {
-    solomatin::Integer i = 10;
-    float x = i / 20.0f;
+    Rational r(2, 3);
+    Integer z(5);
+    std::cout << z;
     return 0;
 }
